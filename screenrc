@@ -1,0 +1,12 @@
+hardstatus alwayslastline
+altscreen on
+defscrollback 4096
+vbell off
+defutf8 on
+encoding UTF-8
+startup_message off
+attrcolor b ".I"
+defbce on
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+hardstatus string '%{= dK}%-Lw%{=b dd}%50>%n%f* %t%{= dK}%+Lw%< %{=b kW}%-=%d/%m/%Y %c:%s%{-}'
+term screen-256color-bce
