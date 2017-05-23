@@ -9,3 +9,4 @@ Dotfiles for:
 - i3status
 - rofi
 - termite
+- zsh (with oh-my-zsh)
