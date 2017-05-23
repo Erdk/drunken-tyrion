@@ -1,4 +1,11 @@
 drunken-tyrion
 ==============
 
-Repository with my config files.
+Dotfiles for:
+
+- vim
+- tmux
+- i3
+- i3status
+- rofi
+- termite
