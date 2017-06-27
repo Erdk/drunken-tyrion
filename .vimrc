@@ -5,26 +5,31 @@
 " setting up Vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#begin()
+if empty(glob("~/.vim/autoload/plug.vim"))
+  " Ensure all needed directories exist  (Thanks @kapadiamush)
+  execute '!mkdir -p ~/.vim/plugged'
+  execute '!mkdir -p ~/.vim/autoload'
+  " Download the actual plugin manager
+  execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-markdown'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdtree'
-Plugin 'fatih/vim-go'
-Plugin 'VimClojure'
-Plugin 'rust-lang/rust.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'xero/blaquemagick.vim'
-Plugin 'ryanpcmcquen/true-monochrome_vim'
-Plugin 'sophacles/vim-processing'
+call plug#begin('~/.vim/plugged')
 
-call vundle#end()
+Plug 'airblade/vim-gitgutter'
+Plug 'flazz/vim-colorschemes'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Shougo/neocomplete.vim'
+Plug 'oblitum/rainbow'
+Plug 'mbbill/undotree'
+Plug 'fatih/vim-go', { 'for' : 'go' }
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+
+call plug#end()
 
 " mouse support
 set mouse=a
@@ -53,10 +58,11 @@ set foldlevel=1
 " visuals
 set t_Co=256
 set background=dark
-"colo monochrome
+colo cobalt2
 set number
 set colorcolumn=80
-highligh clear SignColumn
+highlight clear SignColumn
+highlight clear LineNr
 
 " airline options
 set laststatus=2
@@ -64,10 +70,14 @@ set showtabline=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts = 1
-let g:airline_theme='monochrome'
-"let g:airline_solarized_bg='dark'
+"let g:airline_theme=''
 
-" gvim specific ops
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
+
+" rainbow brackets
+let g:rainbow_active = 1
+
 if has('gui_running')
   set guioptions=gi
   set guifont=Droid\ Sans\ Mono\ Dotted\ for\ Powerline\ 12
@@ -95,3 +105,16 @@ nnoremap <Leader>Y "+Y
 nnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 set pastetoggle=<F2>
+
+" lang specific
+
+" go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:syntastic_mode_go_checkers = ['golint', 'govet', 'errcheck']
+
