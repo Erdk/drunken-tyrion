@@ -28,6 +28,7 @@ Plug 'oblitum/rainbow'
 Plug 'mbbill/undotree'
 Plug 'fatih/vim-go', { 'for' : 'go' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 call plug#end()
 
