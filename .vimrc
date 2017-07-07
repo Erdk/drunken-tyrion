@@ -42,6 +42,11 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set wildmenu
+set scrolloff=5
+set nobackup
+set nowb
+set noswapfile
+set showmatch
 
 " indent
 set autoindent
