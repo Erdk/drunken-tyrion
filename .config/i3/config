@@ -141,12 +141,18 @@ bar {
   status_command i3status
   tray_output primary
 	colors {
-		background #0d1926
-		statusline #839496
-
-		focused_workspace  #ffffff #0d1926
-		active_workspace   #ffffff #0d1926
-		inactive_workspace #777777 #0d1926
+#		background         #0d1926
+#	  statusline         #839496
+#		focused_workspace  #ffffff #0d1926
+#		active_workspace   #ffffff #0d1926
+#		inactive_workspace #777777 #0d1926
+#		urgent_workspace   #ffffff #dc322f
+    
+    background         #191919
+    statusline         #ffffff
+		focused_workspace  #ffffff #191919
+  	active_workspace   #ffffff #191919
+		inactive_workspace #777777 #191919
 		urgent_workspace   #ffffff #dc322f
 	}
 }
