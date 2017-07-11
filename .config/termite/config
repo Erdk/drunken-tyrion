@@ -69,7 +69,8 @@ highlight = #2f2f2f
 
 
 # black
-color0 = #0d1926
+#color0 = #0d1926
+color0 = #191919
 # bright_black
 color8 = #2b3845
 # red

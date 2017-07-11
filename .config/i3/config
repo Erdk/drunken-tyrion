@@ -33,7 +33,7 @@ bindsym XF86MonBrightnessDown exec $HOME/bin/chbrightness -5  # decrease screen 
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+d exec --no-startup-id $HOME/bin/rofi.sh
-bindsym $mod+l exec --no-startup-id i3lock -d -B 5 -i /usr/share/pixmaps/background.png
+bindsym $mod+l exec --no-startup-id i3lock -d -k --timecolor=ffffffff --timestr="%H:%M" --timesize=40 -i /usr/share/pixmaps/background.png
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
