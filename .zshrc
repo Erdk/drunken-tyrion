@@ -33,8 +33,8 @@ alias l.="ls -a"
 alias dls="ls --hide=\*.{,l}{o,a}"
 alias cat=lolcat
 
-if [ -z "$ZPROFILE" ]; then
-  source $HOME/.zprofile
+if [ "$TERM" = "screen-256color" ]; then
+  source $HOME/.zshenv
 fi
 
 fortune | cowsay | lolcat
