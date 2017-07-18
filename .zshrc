@@ -4,7 +4,7 @@ ZSH=$HOME/.oh-my-zsh/
 ZSH_THEME="minimal"
 DISABLE_AUTO_UPDATE="true"
 
-plugins=(git)
+plugins=(git fedora)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -23,7 +23,7 @@ zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 
-alias mc=". /usr/lib/mc/mc-wrapper.sh" 
+alias mc=". /usr/libexec/mc/mc-wrapper.sh" 
 unset GREP_OPTIONS
 alias grep="grep --color=auto"
 alias ls="ls --color -h --group-directories-first"
