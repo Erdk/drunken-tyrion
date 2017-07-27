@@ -4,6 +4,7 @@ ZSH=$HOME/.oh-my-zsh/
 ZSH_THEME="minimal"
 DISABLE_AUTO_UPDATE="true"
 
+# TODO: load 'fedora' plugin only in fedora
 plugins=(git fedora)
 
 source $ZSH/oh-my-zsh.sh
@@ -23,7 +24,18 @@ zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 
-alias mc=". /usr/libexec/mc/mc-wrapper.sh" 
+# That's why we can't have nice things:
+# Fedora keeps 'mc-wrapper.sh' in 'libexec', but Arch in 'lib'
+if [[ -a /usr/lib/mc/mc-wrapper.sh ]];
+then 
+  alias mc=". /usr/lib/mc/mc-wrapper.sh" 
+fi
+
+if [[ -a /usr/libexec/mc/mc-wrapper.sh ]];
+then
+  alias mc=". /usr/libexec/mc/mc-wrapper.sh" 
+fi
+
 unset GREP_OPTIONS
 alias grep="grep --color=auto"
 alias ls="ls --color -h --group-directories-first"
