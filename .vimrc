@@ -23,7 +23,11 @@ Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Shougo/neocomplete.vim'
+if !has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else 
+  Plug 'Shougo/neocomplete.vim'
+endif
 Plug 'oblitum/rainbow'
 Plug 'mbbill/undotree'
 Plug 'fatih/vim-go', { 'for' : 'go' }
@@ -34,7 +38,9 @@ call plug#end()
 
 " mouse support
 set mouse=a
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 
 " tab & backspace
 set bs=2
@@ -64,7 +70,7 @@ set foldlevel=1
 " visuals
 set t_Co=256
 set background=dark
-colo cobalt2
+colo mizore
 set number
 set colorcolumn=80
 highlight clear SignColumn
@@ -76,10 +82,18 @@ set showtabline=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts = 1
-"let g:airline_theme=''
+let g:airline_theme='minimalist'
+"let g:airline_theme='dark_minimal'
 
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
+" neocomplete & deoplete
+if !has('nvim')
+  let g:acp_enableAtStartup = 0
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
+else 
+  let g:deoplete#enable_at_startup = 1
+endif
 
 " rainbow brackets
 let g:rainbow_active = 1
@@ -100,7 +114,11 @@ map <F10> :tabprev<cr>
 map <F11> :tabnext<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
+
+" NERDTree
 map <C-n> :NERDTreeToggle<cr>
+" close vim if only window is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " git
 nmap <F7> :GitGutterLineHighlightsToggle<cr>
