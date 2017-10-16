@@ -4,8 +4,8 @@ ZSH=$HOME/.oh-my-zsh/
 ZSH_THEME="minimal"
 DISABLE_AUTO_UPDATE="true"
 
-# TODO: load 'fedora' plugin only in fedora
-plugins=(git fedora)
+# TODO: load 'fedora' plugin only in fedora, 'archlinux' ony on archlinux
+plugins=(git fedora archlinux)
 
 source $ZSH/oh-my-zsh.sh
 
