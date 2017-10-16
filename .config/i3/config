@@ -151,11 +151,11 @@ bar {
 #		inactive_workspace #777777 #0d1926
 #		urgent_workspace   #ffffff #dc322f
     
-    background         #191919
+    background         #000000
     statusline         #ffffff
-		focused_workspace  #ffffff #191919
-  	active_workspace   #ffffff #191919
-		inactive_workspace #777777 #191919
+		focused_workspace  #ffffff #000000
+  	active_workspace   #ffffff #000000
+		inactive_workspace #777777 #000000
 		urgent_workspace   #ffffff #dc322f
 	}
 }
