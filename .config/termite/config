@@ -18,7 +18,7 @@ search_wrap = true
 cursor_blink = system
 
 # "block", "underline" or "ibeam"
-cursor_shape = block
+cursor_shape = underline
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
 browser = xdg-open
@@ -41,13 +41,13 @@ filter_unmatched_urls = true
 
 foreground = #d9e5f2
 foreground_bold = #d9e6f2
-background = #191919
+background = #000000
 
 # 20% background transparency (requires a compositor)
 #background = rgba(63, 63, 63, 0.8)
 
 # if unset, will reverse foreground and background
-highlight = #2f2f2f
+#highlight = #2f2f2f
 
 # colors from color0 to color254 can be set
 #color0 = #3f3f3f
@@ -68,39 +68,53 @@ highlight = #2f2f2f
 #color15 = #ffffff
 
 
-# black
-#color0 = #0d1926
-color0 = #191919
-# bright_black
-color8 = #2b3845
-# red
-color1 = #e44e4e
-# bright_red
-color9 = #f1a7a7
-# green
-color2 = #4ee44e
-# bright_green
-color10 = #a7f1a7
-# yellow
-color3 = #e4e44e
-# bright_yellow
-color11 = #f1f1a7
-# blue
-color4 = #4e4ee4
-# bright_blue
-color12 = #a7a7f1
-# magenta
-color5 = #e44ee4
-# bright_magenta
-color13 = #f1a7f1
-# cyan
-color6 = #4ee4e4
-# bright_cyan
-color14 = #a7f1f1
-# white
-color7 = #bac7d4
-# bright_white
-color15 = #d9e5f2
+## black
+#color0 = #191919
+
+## bright_black
+#color8 = #2b3845
+
+## red
+#color1 = #e44e4e
+
+## bright_red
+#color9 = #f1a7a7
+
+## green
+#color2 = #4ee44e
+
+## bright_green
+#color10 = #a7f1a7
+
+## yellow
+#color3 = #e4e44e
+
+## bright_yellow
+#color11 = #f1f1a7
+
+## blue
+#color4 = #4e4ee4
+
+## bright_blue
+#color12 = #a7a7f1
+
+## magenta
+#color5 = #e44ee4
+
+## bright_magenta
+#color13 = #f1a7f1
+
+## cyan
+#color6 = #4ee4e4
+
+## bright_cyan
+#color14 = #a7f1f1
+
+## white
+#color7 = #bac7d4
+
+## bright_white
+#color15 = #d9e5f2
 
 [hints]
 #font = Monospace 12
