@@ -28,11 +28,12 @@ if !has('nvim')
 else 
   Plug 'Shougo/neocomplete.vim'
 endif
-Plug 'oblitum/rainbow'
+Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
 Plug 'fatih/vim-go', { 'for' : 'go' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'sophacles/vim-processing', { 'for': 'processing' }
 
 call plug#end()
 
@@ -70,7 +71,8 @@ set foldlevel=1
 " visuals
 set t_Co=256
 set background=dark
-colo mizore
+"colo mizore
+colo 1989
 set number
 set colorcolumn=80
 highlight clear SignColumn
