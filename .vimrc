@@ -24,9 +24,11 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 if !has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 else 
-  Plug 'Shougo/neocomplete.vim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
@@ -87,15 +89,11 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='minimalist'
 "let g:airline_theme='dark_minimal'
 
-" neocomplete & deoplete
-if !has('nvim')
-  let g:acp_enableAtStartup = 0
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#sources#syntax#min_keyword_length = 3
-else 
-  let g:deoplete#enable_at_startup = 1
-endif
+" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_yarp = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#auto_complete_smart_length = 3
 
 " rainbow brackets
 let g:rainbow_active = 1
