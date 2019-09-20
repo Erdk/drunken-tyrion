@@ -18,22 +18,17 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'flazz/vim-colorschemes'
-Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar', { 'for': 'cpp' }
+Plug 'scrooloose/syntastic', { 'for': 'cpp' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-if !has('nvim')
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-else 
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-endif
 Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
+Plug 'rakr/vim-one'
 Plug 'fatih/vim-go', { 'for' : 'go' }
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'sophacles/vim-processing', { 'for': 'processing' }
 
@@ -41,9 +36,7 @@ call plug#end()
 
 " mouse support
 set mouse=a
-if !has('nvim')
-  set ttymouse=xterm2
-endif
+set ttymouse=xterm2
 
 " tab & backspace
 set bs=2
@@ -71,10 +64,13 @@ set nofoldenable
 set foldlevel=1
 
 " visuals
-set t_Co=256
+"set t_Co=256
+let &t_8f="\e[38;2;%ld;%ld;%ldm"
+let &t_8b="\e[48;2;%ld;%ld;%ldm"
+set termguicolors
 set background=dark
-"colo mizore
 colo 1989
+"colo one
 set number
 set colorcolumn=80
 highlight clear SignColumn
@@ -86,14 +82,31 @@ set showtabline=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_powerline_fonts = 1
+"let g:airline_theme='one'
 let g:airline_theme='minimalist'
-"let g:airline_theme='dark_minimal'
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_yarp = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#auto_complete_smart_length = 3
+" completion
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+highlight Pmenu ctermbg=238 gui=bold
+
+" cscope
+set cst
+nmap <C-Space>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-Space>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-Space>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-Space>a :cs find a <C-R>=expand("<cword>")<CR><CR>
 
 " rainbow brackets
 let g:rainbow_active = 1
@@ -101,6 +114,7 @@ let g:rainbow_active = 1
 if has('gui_running')
   set guioptions=gi
   set guifont=Droid\ Sans\ Mono\ Dotted\ for\ Powerline\ 12
+  set vb t_vb=
 endif
 
 " set spell
@@ -116,12 +130,16 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
 " NERDTree
-map <C-n> :NERDTreeToggle<cr>
+map <C-b> :NERDTreeToggle<cr>
 " close vim if only window is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " git
 nmap <F7> :GitGutterLineHighlightsToggle<cr>
+set updatetime=250
+
+" undotree
+nnoremap <F5> :UndotreeToggle<cr>
 
 " clipboard
 nnoremap <Leader>y "+y
