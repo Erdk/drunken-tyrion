@@ -4,6 +4,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:hack 10
 for_window [class="^.*"] border pixel 0
+for_window [class="Unity"] floating enable
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -36,7 +37,7 @@ bindsym XF86MonBrightnessDown exec $HOME/bin/chbrightness -5  # decrease screen 
 bindsym $mod+d exec --no-startup-id $HOME/bin/rofi.sh
 
 # lock screen: i3lock-color
-bindsym $mod+l exec --no-startup-id i3lock -d -k --timecolor=ffffffff --timestr="%H:%M" --timesize=40 -i /usr/share/pixmaps/background.png
+bindsym $mod+l exec --no-startup-id $HOME/bin/lock.sh
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
