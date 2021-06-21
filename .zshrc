@@ -5,7 +5,7 @@ ZSH_THEME="minimal"
 DISABLE_AUTO_UPDATE="true"
 
 # TODO: load 'fedora' plugin only in fedora, 'archlinux' ony on archlinux
-plugins=(git fedora archlinux)
+plugins=(colored-man-pages copydir copyfile git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -20,20 +20,20 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename "$HOME/.zshrc"
-  
+
 autoload -Uz compinit
 compinit
 
 # That's why we can't have nice things:
 # Fedora keeps 'mc-wrapper.sh' in 'libexec', but Arch in 'lib'
 if [[ -a /usr/lib/mc/mc-wrapper.sh ]];
-then 
-  alias mc=". /usr/lib/mc/mc-wrapper.sh" 
+then
+  alias mc=". /usr/lib/mc/mc-wrapper.sh"
 fi
 
 if [[ -a /usr/libexec/mc/mc-wrapper.sh ]];
 then
-  alias mc=". /usr/libexec/mc/mc-wrapper.sh" 
+  alias mc=". /usr/libexec/mc/mc-wrapper.sh"
 fi
 
 unset GREP_OPTIONS
