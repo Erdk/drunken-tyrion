@@ -4,7 +4,6 @@ ZSH=$HOME/.oh-my-zsh/
 ZSH_THEME="minimal"
 DISABLE_AUTO_UPDATE="true"
 
-# TODO: load 'fedora' plugin only in fedora, 'archlinux' ony on archlinux
 plugins=(colored-man-pages copydir copyfile git)
 
 source $ZSH/oh-my-zsh.sh
@@ -24,17 +23,7 @@ zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
 
-# That's why we can't have nice things:
-# Fedora keeps 'mc-wrapper.sh' in 'libexec', but Arch in 'lib'
-if [[ -a /usr/lib/mc/mc-wrapper.sh ]];
-then
-  alias mc=". /usr/lib/mc/mc-wrapper.sh"
-fi
-
-if [[ -a /usr/libexec/mc/mc-wrapper.sh ]];
-then
-  alias mc=". /usr/libexec/mc/mc-wrapper.sh"
-fi
+alias mc=". /usr/lib/mc/mc-wrapper.sh"
 
 unset GREP_OPTIONS
 alias grep="grep --color=auto"
@@ -44,8 +33,6 @@ alias la="ll -a"
 alias l.="ls -a"
 alias dls="ls --hide=\*.{,l}{o,a}"
 alias cat="lolcat -t"
-
-fortune | cowsay | lolcat -t
 
 # pip zsh completion start
 function _pip_completion {
@@ -59,3 +46,7 @@ function _pip_completion {
 compctl -K _pip_completion pip
 # pip zsh completion end
 
+path+="$GOPATH/bin"
+path+=$(ruby -e "print Gem::user_dir + '/bin'")
+
+fortune | cowsay | lolcat -t
