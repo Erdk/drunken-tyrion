@@ -33,6 +33,7 @@ alias la="ll -a"
 alias l.="ls -a"
 alias dls="ls --hide=\*.{,l}{o,a}"
 alias cat="lolcat -t"
+alias vim=nvim
 
 # pip zsh completion start
 function _pip_completion {
@@ -48,5 +49,6 @@ compctl -K _pip_completion pip
 
 path+="$GOPATH/bin"
 path+=$(ruby -e "print Gem::user_dir + '/bin'")
+path+="$HOME/.local/bin"
 
 fortune | cowsay | lolcat -t
