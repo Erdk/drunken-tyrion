@@ -1,11 +1,11 @@
 "
-" VIM && GVIM config
+" NVIM && VIM && GVIM config
 "
 
-" setting up Vundle
 set nocompatible
 filetype off
 
+" setting up Plug
 if empty(glob("~/.vim/autoload/plug.vim"))
   " Ensure all needed directories exist  (Thanks @kapadiamush)
   execute '!mkdir -p ~/.vim/plugged'
@@ -72,22 +72,25 @@ set nofoldenable
 set foldlevel=1
 
 " visuals
-"if exists('$TMUX')
+if !has('nvim')
+  set t_Co=256
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"endif
+endif
 
-set t_Co=256
+set number
+set colorcolumn=100
 set termguicolors
-colo 1989
 set background=dark
+colo 1989
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 highlight Normal ctermbg=NONE guibg=NONE
 highlight NonText ctermbg=NONE guibg=NONE
+highlight clear Pmenu
+highlight clear PmenuSel
+highlight PmenuSel guibg=red
 
-set number
-set colorcolumn=100
 highlight clear SignColumn
 highlight clear LineNr
 
@@ -128,17 +131,17 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='minimalist'
 
 " NERDTree
-map <C-n> :NERDTreeToggle<cr>
+map <F7> :NERDTreeToggle<cr>
 " close vim if only window is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " git
-nmap <F7> :GitGutterLineHighlightsToggle<cr>
+nmap <F6> :GitGutterLineHighlightsToggle<cr>
+nmap <F5> :GitGutterPreviewHunk<cr>
 set updatetime=500
 
 " autoformat config
 noremap <F3> :Autoformat<CR>
-au BufWrite *.py :Autoformat
 
 " cscope
 set cst
@@ -212,6 +215,8 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:syntastic_mode_go_checkers = ['golint', 'govet', 'errcheck']
+au BufWrite *.go :Autoformat
 
 " python
 let g:pymode_virtualenv = 1
+au BufWrite *.py :Autoformat
