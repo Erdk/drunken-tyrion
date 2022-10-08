@@ -26,11 +26,36 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
 Plug 'mbbill/undotree'
-Plug 'fatih/vim-go', { 'for' : 'go' }
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'kien/ctrlp.vim'
 Plug 'chiel92/vim-autoformat'
+Plug 'pwntester/octo.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
+" LSP Support
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
+" Autocompletion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+
+"  Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
+Plug 'VonHeikemen/lsp-zero.nvim'
+
+" Languages
+
+"Plug 'fatih/vim-go', { 'for' : 'go' }
+"Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 call plug#end()
 
