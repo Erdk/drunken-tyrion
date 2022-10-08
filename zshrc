@@ -47,6 +47,7 @@ function _pip_completion {
 compctl -K _pip_completion pip
 # pip zsh completion end
 
+typeset -aU path
 path+="$GOPATH/bin"
 path+=$(ruby -e "print Gem::user_dir + '/bin'")
 path+="$HOME/.local/bin"
